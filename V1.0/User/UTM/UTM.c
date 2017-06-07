@@ -87,7 +87,7 @@ static FUNCPTR AfnFunc[] =
 
 static void UTM_OUTPUT(AppBuf * appBuf)
 {
-	  u32 i;
+	u32 i;
     u8 cs = 0u;
     Param_F3 f3;
     Header *header = (Header *)appBuf->pbuf->payLoad;   
