@@ -1,0 +1,14 @@
+.\Output\pbuf.o: ..\User\PBuf.c
+.\Output\pbuf.o: ..\User\PBuf.h
+.\Output\pbuf.o: ..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\Output\pbuf.o: ..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h
+.\Output\pbuf.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\Output\pbuf.o: ..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\Output\pbuf.o: ..\User\stm32f10x_conf.h
+.\Output\pbuf.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h
+.\Output\pbuf.o: ..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\Output\pbuf.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h
+.\Output\pbuf.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h
+.\Output\pbuf.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
+.\Output\pbuf.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\misc.h
+.\Output\pbuf.o: C:\Keil\ARM\ARMCC\bin\..\include\assert.h

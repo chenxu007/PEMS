@@ -1,0 +1,138 @@
+
+
+#include "includes.h"
+
+
+
+
+
+
+
+/*  数据流发送的命令(用于数据留发一回一的协议)   */
+/*************************************************/
+CanTxMsg DsCmdMessage[9] = {
+                                   {0x7DF,0,CAN_ID_STD,CAN_RTR_DATA,8,0x02,0x01,0x01,0x00,0x00,0x00,0x00,0x00},
+                                   {0x7DF,0,CAN_ID_STD,CAN_RTR_DATA,8,0x02,0x01,0x04,0x00,0x00,0x00,0x00,0x00},
+                                   {0x7DF,0,CAN_ID_STD,CAN_RTR_DATA,8,0x02,0x01,0x05,0x00,0x00,0x00,0x00,0x00},
+                                   {0x7DF,0,CAN_ID_STD,CAN_RTR_DATA,8,0x02,0x01,0x0a,0x00,0x00,0x00,0x00,0x00},
+                                   {0x7DF,0,CAN_ID_STD,CAN_RTR_DATA,8,0x02,0x01,0x0b,0x00,0x00,0x00,0x00,0x00},
+                                   {0x7DF,0,CAN_ID_STD,CAN_RTR_DATA,8,0x02,0x01,0x0c,0x00,0x00,0x00,0x00,0x00},
+                                   {0x7DF,0,CAN_ID_STD,CAN_RTR_DATA,8,0x02,0x01,0x0d,0x00,0x00,0x00,0x00,0x00},
+                                   {0x7DF,0,CAN_ID_STD,CAN_RTR_DATA,8,0x02,0x01,0x0f,0x00,0x00,0x00,0x00,0x00},
+                                   {0x7DF,0,CAN_ID_STD,CAN_RTR_DATA,8,0x02,0x01,0x10,0x00,0x00,0x00,0x00,0x00},
+                           };
+CANRbufTypeDef CANRbuf;
+/**
+  * @brief  初始化CAN
+  * @param  None
+  * @retval None
+  */
+void OBD2_CANInit(void)
+{
+  CAN1_GPIOConfig();
+  CAN_Cofig(CAN125K);
+  CAN1_Config16BitFilter(0x7e0, 0x7e0, 0x000, 0x000); 
+}
+/**
+  * @brief  发送一帧CAN数据
+  * @param  None
+  * @retval None
+  */
+ErrorStatus SendFrame(CanTxMsg* TxMessage)
+{
+  u8 TransmitMailbox;
+  u32 i;
+  CANRbuf.CANRXMAIL = ERROR;
+  TransmitMailbox = CAN_Transmit(CAN1, TxMessage);
+  while(CAN_TransmitStatus(CAN1,TransmitMailbox) != CANTXOK);
+  for (i = 0;i < 10000000;i++) //大概3S吧
+  {
+    if (CANRbuf.CANRXMAIL == SUCCESS) break;
+  }
+  return CANRbuf.CANRXMAIL;
+}
+/**
+  * @brief  读IOS15765-4数据流
+  * @param  None
+  * @retval None
+  */
+DSTypeDef Read_IOS15765_4DS(ErrorStatus* err)
+{
+  DSTypeDef OBD2_IOS15765_4;
+  u16 data;
+  OBD2_IOS15765_4.DSTotal = 17;
+  OBD2_IOS15765_4.DSOK = 0x00000000;
+  *err = ERROR;
+ //   for(i=0;i<OBD.DSTotal;i++)                        //  for (CANRbuf.cnt = 0;CANRbuf.cnt < 9;CANRbuf.cnt++)
+ 
+	if (SendFrame(&DsCmdMessage[1]) == SUCCESS)       // 对于不发送读书数据流命令的协议 ，，这里发不发都不影响！
+	{
+	  *err = SUCCESS;
+//	  OBD2_IOS15765_4.DSOK|=1<<(31-CANRbuf.cnt);
+//    switch (CANRbuf.cnt)
+    							     
+	  data = CANRbuf.DSMessage[0].Data[3]<<8;  	        /*01   发动机转速     000A BYTE3-2(D)         0~3000     */    
+	  data |=CANRbuf.DSMessage[0].Data[2];   
+      OBD2_IOS15765_4.DS01 =	data;                   
+	  data = CANRbuf.DSMessage[1].Data[1]<<8;  	        /*02   发动机水温     000E BYTE1-0(D)         0~200      */
+	  data |=CANRbuf.DSMessage[1].Data[0];              
+      OBD2_IOS15765_4.DS02 =	data;                    
+	  data = CANRbuf.DSMessage[0].Data[5]<<8;  	        /*03   发动机油压     000A BYTE5-4(D)         0~100      */
+	  data |=CANRbuf.DSMessage[0].Data[4];              
+      OBD2_IOS15765_4.DS03 =	data;                    
+	  data = CANRbuf.DSMessage[2].Data[1]<<8;  	        /*04   发动机小时数   000B BYTE1-0(D)         0~65535    */
+	  data |=CANRbuf.DSMessage[2].Data[0];              
+      OBD2_IOS15765_4.DS04 =	data;                    
+	  data = CANRbuf.DSMessage[3].Data[5]<<8;  	        /*05   车速           000C BYTE5-4(D)/100     0~2500     */
+	  data |=CANRbuf.DSMessage[3].Data[4]/100;              
+      OBD2_IOS15765_4.DS05 =	data;                    
+	  data = CANRbuf.DSMessage[2].Data[7]<<8;  	        /*06   变速箱压力     000B BYTE7-6(D)         0~100      */
+	  data |=CANRbuf.DSMessage[2].Data[6];              
+      OBD2_IOS15765_4.DS06 =	data;                    
+	  data = CANRbuf.DSMessage[3].Data[3]<<8;  	        /*07   电池电压       000C BYTE3-2(D)/10       0~500     */
+	  data |=CANRbuf.DSMessage[3].Data[2]/10;              
+      OBD2_IOS15765_4.DS07 =	data;                    
+	  data = CANRbuf.DSMessage[0].Data[7]<<8;  	        /*08   发动机燃油油位 000A BYTE7-6(D)         0~1000     */
+	  data |=CANRbuf.DSMessage[0].Data[6];              
+      OBD2_IOS15765_4.DS08 =	data;                    
+	  data = CANRbuf.DSMessage[0].Data[1]<<8;  	        /*09   臂架角度       000A BYTE1-0(D)         0~600      */
+	  data |=CANRbuf.DSMessage[0].Data[0];              
+      OBD2_IOS15765_4.DS09 =	data;                    
+	  data = CANRbuf.DSMessage[1].Data[3]<<8;  	        /*10   臂架长度       000E BYTE3-2(D)         860~1567   */
+	  data |=CANRbuf.DSMessage[1].Data[2];              
+      OBD2_IOS15765_4.DS10 =	data;                    
+	  data = CANRbuf.DSMessage[2].Data[5]<<8;  	        /*11   变速箱温度     000B BYTE5-4(D)         0~200      */
+	  data |=CANRbuf.DSMessage[2].Data[4];              
+      OBD2_IOS15765_4.DS11 =	data;                    
+	  data = CANRbuf.DSMessage[4].Data[3]<<8;  	        /*12   集装箱重量     000F BYTE3-2(D)         0~45000    */
+	  data |=CANRbuf.DSMessage[4].Data[2];              
+      OBD2_IOS15765_4.DS12 =	data;                    
+	  data = CANRbuf.DSMessage[5].Data[3]<<8;  	        /*13   吊箱数         0011 BYTE3-2(D)         0~65535    */
+	  data |=CANRbuf.DSMessage[5].Data[2];              
+      OBD2_IOS15765_4.DS13 =	data;                    
+	  data = CANRbuf.DSMessage[6].Data[1]<<8;  	        /*14   总油耗         0026 BYTE3,2,1,0        4294967259 */
+	  data |=CANRbuf.DSMessage[6].Data[0];              
+      OBD2_IOS15765_4.DS14 =	data;                    
+	  data = CANRbuf.DSMessage[6].Data[1]<<8;  	        /*15   工作油耗       0026 BYTE7,6,5,4        4294967259 */
+	  data |=CANRbuf.DSMessage[6].Data[0];              
+      OBD2_IOS15765_4.DS15 =	data;                    
+	  data = CANRbuf.DSMessage[6].Data[3]<<8;  	        /*16   行走油耗       0027 BYTE3,2,1,0        4294967259 */
+	  data |=CANRbuf.DSMessage[6].Data[2];              
+      OBD2_IOS15765_4.DS01 =	data                    
+	  data = CANRbuf.DSMessage[7].Data[3]<<8;  	        /*17   怠速油耗       0027 BYTE7,6,5,4        4294967259 */
+	  data |=CANRbuf.DSMessage[7].Data[2];              
+      OBD2_IOS15765_4.DS17 =	data;                    
+	}
+ 
+  
+  return OBD2_IOS15765_4;
+}
+
+
+
+
+
+
+
+
+

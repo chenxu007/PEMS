@@ -1,0 +1,47 @@
+
+#ifndef __IOS157654_H
+#define __IOS157654_H
+
+typedef struct
+{
+  __IO u8    DSTotal;
+  __IO u32	 DSOK;
+  __IO float DS1;
+  __IO float DS2;
+  __IO float DS3;
+  __IO float DS4;
+  __IO float DS5;
+  __IO float DS6;
+  __IO float DS7;
+  __IO float DS8;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+  __IO float DS9;
+}DSTypeDef;
+
+typedef struct
+{
+  __IO u8    cnt;
+  CanRxMsg DSMessage[9];
+  ErrorStatus CANRXMAIL;
+}CANRbufTypeDef;
+
+extern CanTxMsg DsCmdMessage[9];
+extern CANRbufTypeDef CANRbuf;
+
+void OBD2_CANInit(void);
+ErrorStatus SendFrame(CanTxMsg* TxMessage);
+DSTypeDef Read_IOS15765_4DS(ErrorStatus* err);
+#endif
+
+
