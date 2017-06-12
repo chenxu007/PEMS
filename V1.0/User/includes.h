@@ -8,8 +8,12 @@
 #include "m35.h"
 #include "delay.h"
 #include "ios157654.h"
+#include "param.h"
 #include  <stdio.h>
 #include  <string.h>
+#include "api.h"
+#include "UTM.h"
+#include "Chan.h"
 
 // typedef struct
 // {
@@ -19,7 +23,7 @@
 //   __IO char  *Unit;
 // }DSOutPutFormatTypeDef;
 
-#define MAX_USER_CANID 68
-#define MIN_USER_CANID 10
+
 extern __IO char TCP_Package[255];
+extern void tmp(void); 
 #endif

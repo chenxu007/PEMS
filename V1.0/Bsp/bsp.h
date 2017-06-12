@@ -31,6 +31,8 @@
 #define GPS_USART_RXD	 GPIO_Pin_3
 #define GPS_USART        USART2
 #define GPS_USART_IRQn	 USART2_IRQn
+
+#define MAIN_TIME_RTC_IRQn  RTC_IRQn
 /**********LEDÒý½Å¶¨Òå***********/
 #define RCC_APBxPeriph_LED_IO   RCC_APB2Periph_GPIOA
 
@@ -48,6 +50,7 @@ void M35_USARTx_Config(u32 Baud);
 void GPS_USARTx_Config(u32 Baud);
 void NVIC_Config(void);
 void LED_init(void);
+void RTC_Init(void);
 void LED4_ONOFF(u8 time);
 void ClearRAM(u8* ram,u32 n);
 void CAN1_GPIOConfig(void);

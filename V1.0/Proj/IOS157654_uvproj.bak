@@ -461,6 +461,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\UTM\UTM.c</FilePath>
             </File>
+            <File>
+              <FileName>PBuf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\PBuf.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

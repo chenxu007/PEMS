@@ -1,7 +1,9 @@
 
 
 #include "includes.h"
-
+#include "stm32f10x_rtc.h"
+#include "stm32f10x_bkp.h"
+#include "stm32f10x_pwr.h"
 
 /**
   * @brief  printf∫Ø ˝≈‰÷√°£
@@ -113,7 +115,7 @@ void GPS_USARTx_Config(u32 Baud)
   GPIO_InitTypeDef GPIO_InitStructure;
   USART_InitTypeDef USART_InitStructure;
 
-	RCC_APB2PeriphClockCmd(RCC_APBxPeriph_GPS_USART_IO,ENABLE);
+  RCC_APB2PeriphClockCmd(RCC_APBxPeriph_GPS_USART_IO,ENABLE);
   RCC_APB1PeriphClockCmd(RCC_APBxPeriph_GPS_USART,ENABLE);
   				 
   GPIO_InitStructure.GPIO_Pin = GPS_USART_TXD;
@@ -141,7 +143,34 @@ void GPS_USARTx_Config(u32 Baud)
   USART_Cmd(GPS_USART,ENABLE);
 }
 
+void RTC_Init(void)
+{
+//     RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR  |  RCC_APB1Periph_BKP, ENABLE);
+//     PWR_BackupAccessCmd(ENABLE); 
+//     BKP_DeInit();
+// //     RCC_LSEConfig(RCC_LSE_ON);  
+// //     while (RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET)  
+// //     {}  
+//     RCC_RTCCLKConfig(RCC_RTCCLKSource_HSE_Div128);//??RTC??(RTCCLK),??LSE??RTC?? 
+//     RCC_RTCCLKCmd(ENABLE);//??RTC?? 
+//     RTC_WaitForLastTask();//???????RTC?????????
+//     RTC_WaitForSynchro();//??RTC????? 
+//     RTC_ITConfig(RTC_IT_SEC, ENABLE);//??RTC???
+//     RTC_WaitForLastTask();//???????RTC?????????
+//     RTC_EnterConfigMode();/// ????
+//     RTC_SetPrescaler(62500); //??RTC?????
+//     RTC_WaitForLastTask();//???????RTC?????????
+//     //RTC_Set(2009,12,2,10,0,55); //????
+//     RTC_ExitConfigMode(); //?????? 
+//     BKP_WriteBackupRegister(BKP_DR1, 0X5050);
 
+//      RTC_WaitForLastTask();  
+//     
+//     RTC_EnterConfigMode();
+//     RTC_WaitForLastTask();
+//     RTC_ITConfig(RTC_IT_SEC, ENABLE);
+//     RTC_ExitConfigMode();
+}
 
 
 /**
@@ -169,6 +198,12 @@ void NVIC_Config(void)
     NVIC_InitStructure.NVIC_IRQChannel = GPS_USART_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;
     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+    
+    NVIC_InitStructure.NVIC_IRQChannel = MAIN_TIME_RTC_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 }

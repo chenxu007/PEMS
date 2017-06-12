@@ -22,6 +22,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "includes.h"
+#include "stm32f10x_rtc.h"
+
 /** @addtogroup STM32F10x_StdPeriph_Examples
   * @{
   */
@@ -41,7 +43,9 @@
 // 					                {0x00F,0x004},				  /*  5 DS0012 吊重重量         00F                                                     */
 // 					                {0x011,0x005},				  /*  6 DS0013 吊箱数           011                                                     */
 //                      }; 
-
+extern CanRxMsg RxMessage;
+extern TimeTypeDef MainTime;
+extern u8 Flag_Heart;
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -52,8 +56,7 @@
 /******************************************************************************/
 /*            Cortex-M3 Processor Exceptions Handlers                         */
 /******************************************************************************/
-extern CanRxMsg RxMessage;
-extern TimeTypeDef MainTime;
+
 /**
   * @brief  This function handles NMI exception.
   * @param  None
@@ -195,7 +198,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 }
 
  
-extern u8 Flag_GPS_OK;
+
 extern u8 GPS_RX_Buffer[];
 extern u8 GPS_RX_Count;
 
@@ -204,31 +207,31 @@ void USART2_IRQHandler(void)
 	u8 data;
 	
 	data = data;
-	  if(USART_GetFlagStatus(GPS_USART, USART_FLAG_ORE)!=RESET)
-  {
-    data = GPS_USART->DR;
+	if(USART_GetFlagStatus(GPS_USART, USART_FLAG_ORE)!=RESET)
+    {
+        data = GPS_USART->DR;
 		USART_SendData(GPS_USART, USART_ReceiveData(GPS_USART));
-  }
-  if(USART_GetFlagStatus(GPS_USART,USART_FLAG_RXNE)!=RESET)
-  {
+    }
+    if(USART_GetFlagStatus(GPS_USART,USART_FLAG_RXNE)!=RESET)
+    {
     //M35REBUFStructure.M35Rebuf[M35REBUFStructure.cnt++] = M35_USART->DR;
-	  GPS_RX_Count = 0;
-		Flag_GPS_OK = 0;
-    USART_ITConfig(GPS_USART,USART_IT_IDLE,ENABLE);
-  }
-  if(USART_GetFlagStatus(GPS_USART,USART_FLAG_IDLE)!=RESET)
-  {
+        GPS_RX_Count = 0;
+		//Flag_GPS_OK = 0;
+        USART_ITConfig(GPS_USART,USART_IT_IDLE,ENABLE);
+    }
+    if(USART_GetFlagStatus(GPS_USART,USART_FLAG_IDLE)!=RESET)
+    {
     USART_ITConfig(GPS_USART,USART_IT_IDLE,DISABLE);
 	//M35REBUFStructure.flay = SET;
 	//M35REBUFStructure.cnt = 0;
-		GPS_RX_Count = 0;
-		Flag_GPS_OK = 0;
-  }
+	GPS_RX_Count = 0;
+		//Flag_GPS_OK = 0;
+    }
 	
 	if(data == '$')
 	{
 		GPS_RX_Count = 0;
-		Flag_GPS_OK = 0;		
+		//Flag_GPS_OK = 0;		
 	}
 
 	GPS_RX_Buffer[GPS_RX_Count++] = data;
@@ -238,7 +241,8 @@ void USART2_IRQHandler(void)
 		GPS_RX_Count = 59;
         if(GPS_RX_Buffer[4] == 'M' && GPS_RX_Buffer[52] == ',' && GPS_RX_Buffer[59] == ',')
         {
-            Flag_GPS_OK = 1;
+            //Flag_GPS_OK = 1;
+            //UpdateGpsData();
         }            
 	}
 }
@@ -248,35 +252,13 @@ void USART2_IRQHandler(void)
 
 void RTC_IRQHandler(void)
 {
-    if(MainTime.sec < 59)
-    {
-        MainTime.second++;
-    }
-    else if(MainTime.min < 59)
-    {
-        MainTime.second = 0;
-        MainTime.min++
-    }
-    else if(MainTime.hour < 23)
-    {
-        MainTime.second = 0;
-        MainTime.min = 0;
-        MainTime.hour++;
-    }
-    else if(MainTime.day < 30)
-    {
-        MainTime.second = 0;
-        MainTime.min = 0;
-        MainTime.hour = 0;
-        MainTime.day++;
-    }
-    else
-    {
-        MainTime.second = 0;
-        MainTime.min = 0;
-        MainTime.hour = 0;
-        MainTime.day = 0;
-    }
-    Flag_1s = 1;
+    
+    //Flag_Heart = 1;
+//     if (RTC_GetITStatus(RTC_IT_SEC) != RESET)//????
+//     {
+//         MainTimeGo();
+//         RTC_ClearITPendingBit(RTC_IT_SEC);//?????
+//         RTC_WaitForLastTask(); 
+//     }
 }
 

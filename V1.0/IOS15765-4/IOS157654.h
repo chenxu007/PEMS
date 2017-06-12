@@ -2,6 +2,10 @@
 #ifndef __IOS157654_H
 #define __IOS157654_H
 
+#define MAX_USER_CANID 68
+#define MIN_USER_CANID 10
+#define TOTAL_USER_CANID 100
+
 typedef struct
 {
     u8 Data[8]; /*!< Contains the data to be received. It ranges from 0 to 
@@ -10,8 +14,9 @@ typedef struct
 
 }CanDSstru;
 
-extern u8 CanUpdateFlag;
+extern u8 Flag_CanUpdate;
 extern CanDSstru CAN_DS[];
+extern CanRxMsg RxMessage;
 
 
 void OBD2_CANInit(void);

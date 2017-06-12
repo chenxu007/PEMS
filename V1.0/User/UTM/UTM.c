@@ -41,7 +41,7 @@ typedef struct
                                     10 - multi frame, the first frame
                                     11 - single frame */
     u8 Resv2 : 1;
-}Header;
+}__attribute__ ((__packed__))Header;
 
 typedef struct
 {

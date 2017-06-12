@@ -16,5 +16,12 @@
 .\Output\ios157654.o: ..\Bsp\m35.h
 .\Output\ios157654.o: ..\Bsp\delay.h
 .\Output\ios157654.o: ..\IOS15765-4\ios157654.h
+.\Output\ios157654.o: ..\User\UTM\param.h
 .\Output\ios157654.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\Output\ios157654.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\Output\ios157654.o: ..\User\api.h
+.\Output\ios157654.o: ..\User\UTM\UTM.h
+.\Output\ios157654.o: ..\User\AppBuf.h
+.\Output\ios157654.o: ..\User\PBuf.h
+.\Output\ios157654.o: C:\Keil\ARM\ARMCC\bin\..\include\assert.h
+.\Output\ios157654.o: ..\User\Chan\Chan.h

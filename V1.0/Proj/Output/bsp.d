@@ -16,5 +16,15 @@
 .\Output\bsp.o: ..\Bsp\m35.h
 .\Output\bsp.o: ..\Bsp\delay.h
 .\Output\bsp.o: ..\IOS15765-4\ios157654.h
+.\Output\bsp.o: ..\User\UTM\param.h
 .\Output\bsp.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\Output\bsp.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\Output\bsp.o: ..\User\api.h
+.\Output\bsp.o: ..\User\UTM\UTM.h
+.\Output\bsp.o: ..\User\AppBuf.h
+.\Output\bsp.o: ..\User\PBuf.h
+.\Output\bsp.o: C:\Keil\ARM\ARMCC\bin\..\include\assert.h
+.\Output\bsp.o: ..\User\Chan\Chan.h
+.\Output\bsp.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h
+.\Output\bsp.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h
+.\Output\bsp.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h

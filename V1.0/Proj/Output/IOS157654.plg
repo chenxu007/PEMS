@@ -3,7 +3,101 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-C:\luowei\work\j\V1.0\Proj\IOS157654.uvproj
-Project File Date:  06/06/2017
+C:\luowei\work\k\PEMS\V1.0\Proj\IOS157654.uvproj
+Project File Date:  06/08/2017
 
 <h2>Output:</h2>
+Rebuild target 'IOS157654'
+compiling stm32f10x_it.c...
+..\User\api.h(48): warning:  #1-D: last line of file ends without a newline
+compiling main.c...
+..\User\api.h(48): warning:  #1-D: last line of file ends without a newline
+..\User\main.c(17): warning:  #177-D: variable "i" was declared but never referenced
+compiling Wlm.c...
+..\User\Chan\WirelessModule\Wlm.c(71): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\Chan\WirelessModule\Wlm.c(72): warning:  #223-D: function "U16AddToAsciiString" declared implicitly
+..\User\Chan\WirelessModule\Wlm.c(73): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\Chan\WirelessModule\Wlm.c(75): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *"
+compiling Chan.c...
+compiling CheckFrame.c...
+compiling CMD_Ctrl.c...
+compiling CMD_DataTrans.c...
+compiling CMD_FileTrans.c...
+compiling CMD_QueryParam.c...
+compiling CMD_QueryRealData.c...
+compiling CMD_Reset.c...
+compiling CMD_SetParam.c...
+compiling Param.c...
+compiling UTM.c...
+..\User\UTM\UTM.c(67): warning:  #177-D: variable "AfnFunc" was declared but never referenced
+compiling PBuf.c...
+compiling api.c...
+..\User\api.h(48): warning:  #1-D: last line of file ends without a newline
+..\User\api.c(80): warning:  #940-D: missing return statement at end of non-void function "HowLongTime"
+..\User\api.c(127): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(127): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(129): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(129): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(131): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(131): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(133): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(133): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(135): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(135): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(140): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(140): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(142): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(142): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(144): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(144): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(146): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(146): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(151): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(151): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(153): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(153): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(155): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(155): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(160): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(160): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(162): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(162): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(167): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(167): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(179): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(179): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(181): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(181): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(183): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(183): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(188): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(188): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(190): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(190): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(195): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\User\api.c(195): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+..\User\api.c(293): warning:  #1-D: last line of file ends without a newline
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_usart.c...
+compiling misc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_can.c...
+compiling M35.c...
+..\User\api.h(48): warning:  #1-D: last line of file ends without a newline
+..\Bsp\M35.c(42): warning:  #177-D: variable "i" was declared but never referenced
+..\Bsp\M35.c(210): warning:  #2748-D: null argument provided for parameter marked with attribute "nonnull"
+..\Bsp\M35.c(252): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+..\Bsp\M35.c(252): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *restrict"
+compiling delay.c...
+..\User\api.h(48): warning:  #1-D: last line of file ends without a newline
+compiling Bsp.c...
+..\User\api.h(48): warning:  #1-D: last line of file ends without a newline
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+assembling startup_stm32f10x_md.s...
+compiling IOS157654.c...
+..\User\api.h(48): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=14820 RO-data=268 RW-data=124 ZI-data=5076  
+FromELF: creating hex file...
+".\Output\IOS157654.axf" - 0 Error(s), 61 Warning(s).

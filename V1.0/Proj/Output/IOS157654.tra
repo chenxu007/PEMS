@@ -16,6 +16,7 @@
 ### List of Objects: adding '".\output\param.o"'
 ### List of Objects: adding '".\output\utm.o"'
 ### List of Objects: adding '".\output\pbuf.o"'
+### List of Objects: adding '".\output\api.o"'
 ### List of Objects: adding '".\output\stm32f10x_rcc.o"'
 ### List of Objects: adding '".\output\stm32f10x_usart.o"'
 ### List of Objects: adding '".\output\misc.o"'
@@ -29,7 +30,7 @@
 ### List of Objects: adding '".\output\startup_stm32f10x_md.o"'
 ### List of Objects: adding '".\output\ios157654.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 ".\output\stm32f10x_it.o" ".\output\main.o" ".\output\wlm.o" ".\output\chan.o" ".\output\checkframe.o" ".\output\cmd_ctrl.o" ".\output\cmd_datatrans.o" ".\output\cmd_filetrans.o" ".\output\cmd_queryparam.o" ".\output\cmd_queryrealdata.o" ".\output\cmd_reset.o" ".\output\cmd_setparam.o" ".\output\param.o" ".\output\utm.o" ".\output\pbuf.o" ".\output\stm32f10x_rcc.o" ".\output\stm32f10x_usart.o" ".\output\misc.o" ".\output\stm32f10x_gpio.o" ".\output\stm32f10x_can.o" ".\output\m35.o" ".\output\delay.o" ".\output\bsp.o" ".\output\core_cm3.o" ".\output\system_stm32f10x.o" ".\output\startup_stm32f10x_md.o" ".\output\ios157654.o" 
+--cpu Cortex-M3 ".\output\stm32f10x_it.o" ".\output\main.o" ".\output\wlm.o" ".\output\chan.o" ".\output\checkframe.o" ".\output\cmd_ctrl.o" ".\output\cmd_datatrans.o" ".\output\cmd_filetrans.o" ".\output\cmd_queryparam.o" ".\output\cmd_queryrealdata.o" ".\output\cmd_reset.o" ".\output\cmd_setparam.o" ".\output\param.o" ".\output\utm.o" ".\output\pbuf.o" ".\output\api.o" ".\output\stm32f10x_rcc.o" ".\output\stm32f10x_usart.o" ".\output\misc.o" ".\output\stm32f10x_gpio.o" ".\output\stm32f10x_can.o" ".\output\m35.o" ".\output\delay.o" ".\output\bsp.o" ".\output\core_cm3.o" ".\output\system_stm32f10x.o" ".\output\startup_stm32f10x_md.o" ".\output\ios157654.o" 
 --strict --scatter ".\Output\IOS157654.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
@@ -37,7 +38,7 @@
 ### ADS-LD Output File: '.\Output\IOS157654.axf'
 ### ADS-LD Command File: '.\Output\IOS157654.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Output\IOS157654.lnp', Handle=0x00001028
+### Creating CmdFile '.\Output\IOS157654.lnp', Handle=0x000001B8
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Output\IOS157654.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

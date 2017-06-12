@@ -63,8 +63,14 @@ void WlmInit(void)
 }
 
 void WlmSend(AppBuf *appBuf)
-{   
-    if (SIM_SendCmd("AT+QISEND=29\r\n","\r\n>","NULL","NULL",2000,1) != 1)
+{ 
+    u8 cmd[20];
+
+    strcpy(cmd, "AT+QISEND=");
+    U16AddToAsciiString(cmd, appBuf->pbuf->len);
+    strcat(cmd,"\r\n");
+    
+    if (SIM_SendCmd(cmd,"\r\n>","NULL","NULL",2000,1) != 1)
         assert(0);
 		
     if(SIM_SendBuf(appBuf->pbuf->payLoad, appBuf->pbuf->len, "\r\nSEND OK","NULL","NULL",5000,1) != 1)

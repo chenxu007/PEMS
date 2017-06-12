@@ -34,13 +34,7 @@ typedef struct
     __IO u8    M35Rebuf[255];
 }M35RbufTypeDef;
 
-typedef struct
-{
-    u8    sec;
-    u8    min;
-    u8    hour;
-    u8    day;
-}TimeTypeDef;
+
 
 extern M35RbufTypeDef M35REBUFStructure;
 

@@ -1,0 +1,13 @@
+.\Output\stm32f10x_rtc.o: ..\Lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.c
+.\Output\stm32f10x_rtc.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h
+.\Output\stm32f10x_rtc.o: ..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\Output\stm32f10x_rtc.o: ..\Lib\CMSIS\CM3\CoreSupport\core_cm3.h
+.\Output\stm32f10x_rtc.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\Output\stm32f10x_rtc.o: ..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\Output\stm32f10x_rtc.o: ..\User\stm32f10x_conf.h
+.\Output\stm32f10x_rtc.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h
+.\Output\stm32f10x_rtc.o: ..\Lib\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\Output\stm32f10x_rtc.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h
+.\Output\stm32f10x_rtc.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h
+.\Output\stm32f10x_rtc.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
+.\Output\stm32f10x_rtc.o: ..\Lib\STM32F10x_StdPeriph_Driver\inc\misc.h

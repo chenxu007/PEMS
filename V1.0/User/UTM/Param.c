@@ -21,7 +21,7 @@ modification history
 static Param TerminalParam = 
 {
     {30, 3, 3},
-    {{192, 168, 1, 226}, 8686, {192, 168, 1, 227}, 8686, "cmnet"},
+    {{122,114,240,145}, 8383, {211,149,217,237}, 8383, "cmnet"},
     {0, {0x12,0x34, 0x56, 0x78,0x09}},
     {60},
     {CAN_REPORT_MODE_REAL, 90}

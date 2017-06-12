@@ -3,8 +3,8 @@
 #include "includes.h"
 
 
-
-CanDSstru CAN_DS[100];//[0]~[99]依次存放id0x000a~0x0044的can数据，只放data以及一个更新标志位，上传清0 
+u8 Flag_CanUpdate = 0;
+CanDSstru CAN_DS[TOTAL_USER_CANID];//[0]~[99]依次存放id0x000a~0x0044的can数据，只放data以及一个更新标志位，上传清0 
 CanRxMsg RxMessage;
 
 
@@ -62,7 +62,7 @@ void CAN1_DS_UPDATE(CanRxMsg* RxMessage)
  		    {
                 CAN_DS[id - MIN_USER_CANID].Data[i] = RxMessage->Data[i];
  			    CAN_DS[id - MIN_USER_CANID].UpdateFlag = 1;
-			    CanUpdateFlag = 1;
+			    Flag_CanUpdate = 1;
  		    }
  	    }
     }
