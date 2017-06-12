@@ -247,11 +247,12 @@ void CanReport(void)
     {
         for(i = MIN_USER_CANID; i <= MAX_USER_CANID; i++)
         {
-            if(1 == CAN_DS[i-MIN_USER_CANID].UpdateFlag)
+            if(1 == CanDataSheet.CanData[i-MIN_USER_CANID].UpdateFlag)
             {
-                CanActiveReport(i, (u8 *)CAN_DS[i-MIN_USER_CANID].Data);
+                CanActiveReport(i, (u8 *)CanDataSheet.CanData[i-MIN_USER_CANID].Data);
             }
         }
+        CanDataSheet.UpdateNum = 0;
     }
     else
     {
@@ -260,22 +261,25 @@ void CanReport(void)
         APPBUF_POAOUT_INIT((&appBuf), 0, ppbuffer,
             AFN_ACTIVEREPORT, PRM_REQU, FRAME_SINGLE, 0, NULL);
 
-        //周期上报
+        /* can周期上报f2*/
         appBuf.pbuf->payLoad[appBuf.pbuf->len++] = 2;
+        
+        /* can周期上报条数*/
+        appBuf.pbuf->payLoad[appBuf.pbuf->len++] = CanDataSheet.UpdateNum;
         
         for(i = MIN_USER_CANID; i <= MAX_USER_CANID; i++)
         {
-            if(1 == CAN_DS[i-MIN_USER_CANID].UpdateFlag)
+            if(1 == CanDataSheet.CanData[i-MIN_USER_CANID].UpdateFlag)
             {
+                /* can id*/
                 appBuf.pbuf->payLoad[appBuf.pbuf->len++] = (u8)(i & 0x00FF);
                 appBuf.pbuf->payLoad[appBuf.pbuf->len++] = (u8)((i >> 8) & 0x00FF);
 
-                memcpy(&appBuf.pbuf->payLoad[appBuf.pbuf->len], (u8 *)CAN_DS[i-MIN_USER_CANID].Data, 8);
+                /* can data*/
+                memcpy(&appBuf.pbuf->payLoad[appBuf.pbuf->len], (u8 *)CanDataSheet.CanData[i-MIN_USER_CANID].Data, 8);
                 appBuf.pbuf->len += 8;                
             }
         }
-        //canId
-
 
         UTM_DO(&appBuf);
 

@@ -4,7 +4,7 @@
 
 
 u8 Flag_CanUpdate = 0;
-CanDSstru CAN_DS[TOTAL_USER_CANID];//[0]~[99]依次存放id0x000a~0x0044的can数据，只放data以及一个更新标志位，上传清0 
+CanDataSheetStru CanDataSheet;//
 CanRxMsg RxMessage;
 
 
@@ -16,9 +16,9 @@ CanRxMsg RxMessage;
   */
 void OBD2_CANInit(void)
 {
-  CAN1_GPIOConfig();
-  CAN_Cofig(CAN125K);
-	ClearRAM((u8*)CAN_DS,900);
+    CAN1_GPIOConfig();
+    CAN_Cofig(CAN125K);
+	ClearRAM((u8 *)&CanDataSheet, 2*(TOTAL_USER_CANID+1));
 	CAN1_Config16BitFilter(0,0, 0, 0, 0);
 //   CAN1_Config16BitFilter( 0,0x000A, 0x000A, 0xFFFF, 0xFFFF);   		// 这里只判断接收我们关心的ID其余的屏蔽
 //   CAN1_Config16BitFilter( 1,0x000B, 0x000B, 0xFFFF, 0xFFFF); 
@@ -58,10 +58,11 @@ void CAN1_DS_UPDATE(CanRxMsg* RxMessage)
 	{
         for(i=0;i<8;i++)
  	    {
-            if(CAN_DS[id - MIN_USER_CANID].Data[i] != RxMessage->Data[i])
+            if(CanDataSheet.CanData[id - MIN_USER_CANID].Data[i] != RxMessage->Data[i])
  		    {
-                CAN_DS[id - MIN_USER_CANID].Data[i] = RxMessage->Data[i];
- 			    CAN_DS[id - MIN_USER_CANID].UpdateFlag = 1;
+                CanDataSheet.CanData[id - MIN_USER_CANID].Data[i] = RxMessage->Data[i];
+ 			    CanDataSheet.CanData[id - MIN_USER_CANID].UpdateFlag = 1;
+                CanDataSheet.UpdateNum++;
 			    Flag_CanUpdate = 1;
  		    }
  	    }

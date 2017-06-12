@@ -4,7 +4,7 @@
 
 #define MAX_USER_CANID 68
 #define MIN_USER_CANID 10
-#define TOTAL_USER_CANID 100
+#define TOTAL_USER_CANID 60
 
 typedef struct
 {
@@ -12,10 +12,17 @@ typedef struct
                         0xFF. */
     u8 UpdateFlag;	/*0没有更新 1有更新*/					
 
-}CanDSstru;
+}CanDataStru;
+
+typedef struct
+{
+    u16 UpdateNum; /*更新的can数据条数*/
+    CanDataStru CanData[TOTAL_USER_CANID];	/*[0]~[xx]依次存放id0x000a~0x00xx的can数据，只放data以及一个更新标志位，上传清0 */					
+
+}CanDataSheetStru;
 
 extern u8 Flag_CanUpdate;
-extern CanDSstru CAN_DS[];
+extern CanDataSheetStru CanDataSheet;
 extern CanRxMsg RxMessage;
 
 

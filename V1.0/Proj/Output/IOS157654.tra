@@ -38,7 +38,7 @@
 ### ADS-LD Output File: '.\Output\IOS157654.axf'
 ### ADS-LD Command File: '.\Output\IOS157654.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Output\IOS157654.lnp', Handle=0x000001B8
+### Creating CmdFile '.\Output\IOS157654.lnp', Handle=0x000005C8
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Output\IOS157654.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Output\IOS157654.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\IOS157654.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Mon Jun 12 10:32:16 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.02 [Build 28]: Last Updated: Mon Jun 12 17:43:59 2017
 <BR><P>
 <H3>Maximum Stack Usage =        328 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -466,7 +466,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[62]"></a>CanReport</STRONG> (Thumb, 314 bytes, Stack size 40 bytes, api.o(.text))
+<P><STRONG><a name="[62]"></a>CanReport</STRONG> (Thumb, 350 bytes, Stack size 40 bytes, api.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 328 + Unknown Stack Size
 <LI>Call Chain = CanReport &rArr; CanActiveReport &rArr; UTM_DO &rArr; UTM_OUTPUT &rArr; ChanSend &rArr; WlmSend &rArr; SIM_SendCmd &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -1142,7 +1142,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[58]"></a>OBD2_CANInit</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, ios157654.o(.text))
+<P><STRONG><a name="[58]"></a>OBD2_CANInit</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, ios157654.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = OBD2_CANInit &rArr; CAN1_Config16BitFilter &rArr; CAN_FilterInit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_Config16BitFilter
@@ -1153,7 +1153,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[51]"></a>CAN1_DS_UPDATE</STRONG> (Thumb, 94 bytes, Stack size 12 bytes, ios157654.o(.text))
+<P><STRONG><a name="[51]"></a>CAN1_DS_UPDATE</STRONG> (Thumb, 112 bytes, Stack size 12 bytes, ios157654.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = CAN1_DS_UPDATE
 </UL>
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_LP_CAN1_RX0_IRQHandler
